@@ -145,8 +145,13 @@ extension PhoneBookViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let phoneBook = phoneBook[indexPath.row]
-        print("Selected phoneBook: \(phoneBook.name), Phone: \(phoneBook.phoneNumber)")
+        let phoneBook = phoneBookList[indexPath.row]
+        //print(phoneBook)
+        let addVC = AddViewController()
+        addVC.phoneBook = phoneBook
+        addVC.isEditingMode = true
+        self.tableView.reloadData()
+        navigationController?.pushViewController(addVC, animated: true)
     }
 }
 

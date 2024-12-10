@@ -6,6 +6,8 @@ import CoreData
 class AddViewController: UIViewController {
     
     private var container: NSPersistentContainer!
+    var phoneBook: NSManagedObject?
+    var isEditingMode: Bool = false
     
     private let pokeImageView: UIImageView = {
         let imageView = UIImageView()
@@ -49,6 +51,7 @@ class AddViewController: UIViewController {
         self.container = appDelegate.persistentContainer
         setupNavigationBar()
         setupLayout()
+        configureEditingMode()
     }
     
     private func setupNavigationBar() {
@@ -131,11 +134,10 @@ class AddViewController: UIViewController {
     
     @objc private func addButtonTapped() {
         print("추가 버튼 탭됨")
-        // 연락처 저장 로직 추가 예정
         guard let name = nameTextField.text, !name.isEmpty,
               let phoneNumber = phoneTextField.text, !phoneNumber.isEmpty,
               let image = pokeImageView.image else {
-            showAlert(message: "이름과 전화번호를 모두 입력하세요.")
+            showAlert(message: "이미지생성과 이름과 전화번호를 모두 입력하세요.")
             return
         }
         createData(name: name, phoneNumber: phoneNumber, image: image)
@@ -171,6 +173,19 @@ class AddViewController: UIViewController {
             print("문맥 저장 성공")
         } catch{
             print("문맥 저장 실패")
+        }
+    }
+    
+    func configureEditingMode() {
+        guard isEditingMode, let phoneBook = phoneBook else { return }
+        navigationItem.title = phoneBook.value(forKey: PokemonPhoneBook.Key.name) as? String
+        nameTextField.text = phoneBook.value(forKey: PokemonPhoneBook.Key.name) as? String
+        phoneTextField.text = phoneBook.value(forKey: PokemonPhoneBook.Key.phoneNumber) as? String
+        
+        if let imageData = phoneBook.value(forKey: PokemonPhoneBook.Key.image) as? Data {
+            pokeImageView.image = UIImage(data: imageData)
+        } else {
+            pokeImageView.image = nil
         }
     }
 }
