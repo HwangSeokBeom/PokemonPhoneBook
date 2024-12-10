@@ -7,15 +7,15 @@
 
 import Foundation
 
-struct PokemonModel: Decodable {
+struct PokeModel: Decodable {
     let id: Int
     let name: String
     let height: Int
     let weight: Int
-    let sprites: PokemonSprites
+    let sprites: PokeSprites
 }
 
-struct PokemonSprites: Decodable {
+struct PokeSprites: Decodable {
     let frontDefault: String
     let frontShiny: String
 

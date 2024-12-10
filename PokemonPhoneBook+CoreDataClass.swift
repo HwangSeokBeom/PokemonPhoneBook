@@ -11,5 +11,10 @@ import CoreData
 
 @objc(PokemonPhoneBook)
 public class PokemonPhoneBook: NSManagedObject {
-
+    public static let className = "PokemonPhoneBook"
+    public enum Key {
+        static let name = "name"
+        static let phoneNumber = "phoneNumber"
+        static let image = "image"
+    }
 }
