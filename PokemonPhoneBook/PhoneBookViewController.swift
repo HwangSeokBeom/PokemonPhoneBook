@@ -146,7 +146,7 @@ extension PhoneBookViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let phoneBook = phoneBookList[indexPath.row]
-        //print(phoneBook)
+        print(phoneBook)
         let addVC = AddViewController()
         addVC.phoneBook = phoneBook
         addVC.isEditingMode = true

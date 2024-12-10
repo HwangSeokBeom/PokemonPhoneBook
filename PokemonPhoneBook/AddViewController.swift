@@ -140,7 +140,11 @@ class AddViewController: UIViewController {
             showAlert(message: "이미지생성과 이름과 전화번호를 모두 입력하세요.")
             return
         }
-        createData(name: name, phoneNumber: phoneNumber, image: image)
+        if isEditingMode {
+            updateData(name: name, phoneNumber: phoneNumber, image: image)
+        } else {
+            createData(name: name, phoneNumber: phoneNumber, image: image)
+        }
         print("저장 버튼 탭됨")
         navigationController?.popViewController(animated: true)
     }
@@ -158,7 +162,7 @@ class AddViewController: UIViewController {
         }
     }
     
-    func createData(name: String, phoneNumber: String, image: UIImage){
+    private func createData(name: String, phoneNumber: String, image: UIImage){
         guard let entity = NSEntityDescription.entity(forEntityName: PokemonPhoneBook.className, in: self.container.viewContext) else{return}
         let newPhoneBook = NSManagedObject(entity: entity, insertInto: self.container.viewContext)
         newPhoneBook.setValue(name, forKey: PokemonPhoneBook.Key.name)
@@ -176,7 +180,27 @@ class AddViewController: UIViewController {
         }
     }
     
-    func configureEditingMode() {
+    private func updateData(name: String, phoneNumber: String, image: UIImage){
+        
+        guard let phoneBook = phoneBook else {
+                print("편집 중인 연락처가 없습니다.")
+                return
+            }
+            phoneBook.setValue(name, forKey: PokemonPhoneBook.Key.name)
+            phoneBook.setValue(phoneNumber, forKey: PokemonPhoneBook.Key.phoneNumber)
+            
+            if let imageData = image.pngData() {
+                phoneBook.setValue(imageData, forKey: PokemonPhoneBook.Key.image)
+            }
+            do {
+                try self.container.viewContext.save()
+                print("데이터 업데이트 성공")
+            } catch {
+                print("데이터 업데이트 실패: \(error)")
+            }
+    }
+    
+    private func configureEditingMode() {
         guard isEditingMode, let phoneBook = phoneBook else { return }
         navigationItem.title = phoneBook.value(forKey: PokemonPhoneBook.Key.name) as? String
         nameTextField.text = phoneBook.value(forKey: PokemonPhoneBook.Key.name) as? String
