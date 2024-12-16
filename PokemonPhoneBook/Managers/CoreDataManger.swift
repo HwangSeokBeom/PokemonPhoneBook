@@ -47,6 +47,8 @@ class CoreDataManager {
     
     func fetchPhoneBooks() -> [NSManagedObject] {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: PokemonPhoneBook.className)
+        let sortDescriptor = NSSortDescriptor(key: PokemonPhoneBook.Key.name, ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
         do {
             return try context.fetch(fetchRequest)
         } catch {

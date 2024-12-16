@@ -7,21 +7,19 @@
 
 import Foundation
 
-struct PokeModel: Decodable {
+struct PokeMon: Decodable {
     let id: Int
     let name: String
     let height: Int
     let weight: Int
-    let sprites: PokeSprites
+    let sprites: PokemonSprites
 }
 
-struct PokeSprites: Decodable {
+struct PokemonSprites: Decodable {
     let frontDefault: String
-    let frontShiny: String
 
     enum CodingKeys: String, CodingKey {
         case frontDefault = "front_default"
-        case frontShiny = "front_shiny"
     }
 }
 

@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		99F6F24D2D03148C002E7842 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 99F6F24C2D03148C002E7842 /* SnapKit */; };
 		99F6F2502D03149D002E7842 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 99F6F24F2D03149D002E7842 /* Alamofire */; };
-		99F6F2EC2D081541002E7842 /* PokemonPhoneBook+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6F2EA2D081541002E7842 /* PokemonPhoneBook+CoreDataClass.swift */; };
-		99F6F2ED2D081541002E7842 /* PokemonPhoneBook+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6F2EB2D081541002E7842 /* PokemonPhoneBook+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,25 +32,35 @@
 		99F6F1C92D030AD6002E7842 /* PokemonPhoneBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokemonPhoneBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99F6F1E22D030AD7002E7842 /* PokemonPhoneBookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokemonPhoneBookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		99F6F1EC2D030AD7002E7842 /* PokemonPhoneBookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokemonPhoneBookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		99F6F2EA2D081541002E7842 /* PokemonPhoneBook+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PokemonPhoneBook+CoreDataClass.swift"; sourceTree = "<group>"; };
-		99F6F2EB2D081541002E7842 /* PokemonPhoneBook+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PokemonPhoneBook+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		99F6F1F42D030AD7002E7842 /* Exceptions for "PokemonPhoneBook" folder in "PokemonPhoneBook" target */ = {
+		99F6F2F42D097CF5002E7842 /* Exceptions for "PokemonPhoneBook" folder in "PokemonPhoneBook" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
+				Models/PokemonPhoneBook.xcdatamodeld,
 			);
 			target = 99F6F1C82D030AD6002E7842 /* PokemonPhoneBook */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		99F6F2FD2D097D05002E7842 /* Exceptions for "PokemonPhoneBook" folder in "Compile Sources" phase from "PokemonPhoneBook" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = 99F6F1C52D030AD6002E7842 /* Sources */;
+			membershipExceptions = (
+				Models/PokemonPhoneBook.xcdatamodeld,
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		99F6F1CB2D030AD6002E7842 /* PokemonPhoneBook */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				99F6F1F42D030AD7002E7842 /* Exceptions for "PokemonPhoneBook" folder in "PokemonPhoneBook" target */,
+				99F6F2F42D097CF5002E7842 /* Exceptions for "PokemonPhoneBook" folder in "PokemonPhoneBook" target */,
+				99F6F2FD2D097D05002E7842 /* Exceptions for "PokemonPhoneBook" folder in "Compile Sources" phase from "PokemonPhoneBook" target */,
 			);
 			path = PokemonPhoneBook;
 			sourceTree = "<group>";
@@ -99,8 +107,6 @@
 		99F6F1C02D030AD6002E7842 = {
 			isa = PBXGroup;
 			children = (
-				99F6F2EA2D081541002E7842 /* PokemonPhoneBook+CoreDataClass.swift */,
-				99F6F2EB2D081541002E7842 /* PokemonPhoneBook+CoreDataProperties.swift */,
 				99F6F1CB2D030AD6002E7842 /* PokemonPhoneBook */,
 				99F6F1E52D030AD7002E7842 /* PokemonPhoneBookTests */,
 				99F6F1EF2D030AD7002E7842 /* PokemonPhoneBookUITests */,
@@ -268,8 +274,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99F6F2EC2D081541002E7842 /* PokemonPhoneBook+CoreDataClass.swift in Sources */,
-				99F6F2ED2D081541002E7842 /* PokemonPhoneBook+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
